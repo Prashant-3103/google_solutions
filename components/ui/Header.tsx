@@ -18,11 +18,11 @@ interface ItemProps{
     item: any
 }
 
-interface MapProps{
-    page: any,
-    index: any
-}
+interface Page {
+    href: string;
+    title: string;
 
+  }
 const NavItem=({item}: ItemProps)=>{
     const [dropdown, setDropDown] = useState(false);
 const toggleDropDownHandler= ()=>{
@@ -52,7 +52,7 @@ return (
             } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max`}
           >
   <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
-{item.items.map((page,index)=>(
+{item.items.map((page: Page ,index: number)=>(
 
     <Link
 key={index}
