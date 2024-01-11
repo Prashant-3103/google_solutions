@@ -17,7 +17,12 @@ const Hero = () => {
             <div className='relative'>
 
             </div>
-            <button className='w-full bg-primary text-white font-semibold rounded-lg px-5 py-3 '>Community</button>
+           <div className=" flex flex-wrap gap-x-4 gap-y-2.5 lg:text-sm xl:text-base ">
+           <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '>Community</button>
+            <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '>Chat Bot</button>
+            <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '>Talk to one of us</button>
+           </div>
+
           </div>
 
 
