@@ -89,24 +89,31 @@ const [user,setUser] = useState(null)
 
 
 useEffect(()=>{
-const unsubscribe = onAuthStateChanged(auth,async(user)=>{
-if(user){
-    const useRef = doc(firestore,"users",user.uid)
-    const userSnap = await getDoc(useRef)
-    const userData = userSnap.data()
-    setUser(userData)
-    setLoggedIn(true)
-}
-else{
-    setUser(null)
-    router.push('/login')
-    toast.error("Please log in first to chat")
-}
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const useRef = doc(firestore, "users", user.uid);
+      const userSnap = await getDoc(useRef);
 
-})
-return ()=>unsubscribe()
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+        setUser(userData);
+        setLoggedIn(true);
+      } else {
+        setUser(null);
+        setLoggedIn(false); // Assuming you want to set to false if the user doesn't exist
+        router.push('/login');
+        toast.error("User data not found. Please log in again.");
+      }
+    } else {
+      setUser(null);
+      setLoggedIn(false);
+      router.push('/login');
+      toast.error("Please log in first to chat");
+    }
+  });
+
+  return () => unsubscribe();
 },[auth,router])
-console.log(user);
 
 
 
@@ -119,12 +126,11 @@ const navVisibilityHandler = () => {
 }
 const logoutHandler = async () => {
   try {
-    await signOut(auth); // Assuming auth is your Firebase authentication instance
+    await signOut(auth);
     setLoggedIn(false);
-    router.push('/login');
+    router.push('/');
     toast.success('Logout successful!');
   } catch (error) {
-    console.error('Logout error:', error.message);
     toast.error('An error occurred during logout. Please try again.');
   }
 };

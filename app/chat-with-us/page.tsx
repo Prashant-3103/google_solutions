@@ -5,6 +5,8 @@ import { getAuth,onAuthStateChanged } from "firebase/auth";
 import { doc,getDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import Users from "./_components/Users";
+import ChatRoom from "./_components/ChatRoom";
 const page = () => {
     const auth = getAuth(app)
     const [user,setUser] = useState(null)
@@ -28,10 +30,15 @@ const unsubscribe = onAuthStateChanged(auth,async(user)=>{
 return ()=>unsubscribe()
 },[auth,router])
 
-
     return (
-        <div>
-            chatiing platform
+        <div className="flex">
+            <div className="flex-shrink-0 w-3/12   ">
+                <Users user={user}/>
+            </div>
+            <div className="flex-grow w-3/12 ">
+               <ChatRoom user={user}/>
+            </div>
+
         </div>
      );
 }
