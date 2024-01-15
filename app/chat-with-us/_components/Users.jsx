@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+"use client"
+import React, { useState, useEffect } from 'react';
 import UserCard from './UserCard';
+import { firestore,app } from '@/lib/firebase';
+import { collection,onSnapshot,query,addDoc,serverTimestamp,where,getDocs } from 'firebase/firestore';
+import { getAuth,signOut } from 'firebase/auth';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
-interface User {
-  avatarUrl: string;
-  email: string;
-  name: string;
-}
 
-const Users: React.FC<{ user: User }> = ({ user }) => {
+
+const Users = ({ userData }) => {
   const [activeTab, setActiveTab] = useState('users');
 
-  const handleTabClick = (tab: string) => {
+
+  const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 

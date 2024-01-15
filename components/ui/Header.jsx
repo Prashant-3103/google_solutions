@@ -5,7 +5,7 @@ import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from 'react-icons/ai';
 import {useRouter} from "next/navigation";
 import Logo from "@/assets/logo.jpg"
 import Image from "next/image";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { User, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { app, firestore } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
@@ -18,16 +18,8 @@ const navItemsInfo = [
     { name: "Faq",type: "link", href: "/faq" },
 ];
 
-interface ItemProps{
-    item: any
-}
 
-interface Page {
-    href: string;
-    title: string;
-
-  }
-const NavItem=({item}: ItemProps)=>{
+const NavItem=({item})=>{
     const [dropdown, setDropDown] = useState(false);
 const toggleDropDownHandler= ()=>{
     setDropDown((curState)=>{
@@ -60,7 +52,7 @@ return (
             } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max`}
           >
   <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
-{item.items.map((page: Page ,index: number)=>(
+{item.items.map((page ,index)=>(
 
     <Link
 key={index}
@@ -85,7 +77,7 @@ const [navIsVisible, setNavIsVisible] = useState(false);
 const [profileDropdown, setProfileDropdown] = useState(false);
 const [loggedIn , setLoggedIn] = useState(false)
 const auth = getAuth(app)
-const [user,setUser] = useState(null)
+ const [user, setUser] = useState(null)
 
 
 useEffect(()=>{
@@ -95,7 +87,7 @@ useEffect(()=>{
       const userSnap = await getDoc(useRef);
 
       if (userSnap.exists()) {
-        const userData = userSnap.data();
+        const userData = userSnap.data()
         setUser(userData);
         setLoggedIn(true);
       } else {

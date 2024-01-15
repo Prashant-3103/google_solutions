@@ -36,7 +36,7 @@ return ()=>unsubscribe()
                 <Users user={user}/>
             </div>
             <div className="flex-grow w-3/12 ">
-               <ChatRoom user={user}/>
+               <ChatRoom userData={user}/>
             </div>
 
         </div>

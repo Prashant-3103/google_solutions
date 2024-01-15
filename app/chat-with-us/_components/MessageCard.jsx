@@ -1,25 +1,6 @@
 import React from 'react';
 
-interface User {
-  avatarUrl: string;
-  email: string;
-  name: string;
-}
-
-interface Message {
-  id: number;
-  sender: string;
-  avatarUrl: string;
-  content: string;
-  time: string;
-}
-
-interface MessageCardProps {
-  message: Message;
-  user: User;
-}
-
-const MessageCard: React.FC<MessageCardProps> = ({ message, user }) => {
+const MessageCard= ({ message, user }) => {
   const isMessageFromMe = message.sender === user;
   return (
     <div key={message.id} className={`flex mb-4 ${isMessageFromMe? "justify-end": "justify-start"}`}>
