@@ -1,10 +1,14 @@
 "use client"
 import Link from "next/link";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from 'react-icons/ai';
 import {useRouter} from "next/navigation";
 import Logo from "@/assets/logo.jpg"
 import Image from "next/image";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { app, firestore } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import toast from "react-hot-toast";
 const navItemsInfo = [
     { name: "Home", type: "link", href: "/" },
     { name: "Articles",type: "link", href: "/articles" },
@@ -30,6 +34,10 @@ const toggleDropDownHandler= ()=>{
         return !curState;
     })
 }
+
+
+
+
 return (
     <li className="relative group">
 {item.type==="link" ? (
@@ -76,15 +84,51 @@ const router = useRouter()
 const [navIsVisible, setNavIsVisible] = useState(false);
 const [profileDropdown, setProfileDropdown] = useState(false);
 const [loggedIn , setLoggedIn] = useState(false)
+const auth = getAuth(app)
+const [user,setUser] = useState(null)
+
+
+useEffect(()=>{
+const unsubscribe = onAuthStateChanged(auth,async(user)=>{
+if(user){
+    const useRef = doc(firestore,"users",user.uid)
+    const userSnap = await getDoc(useRef)
+    const userData = userSnap.data()
+    setUser(userData)
+    setLoggedIn(true)
+}
+else{
+    setUser(null)
+    router.push('/login')
+    toast.error("Please log in first to chat")
+}
+
+})
+return ()=>unsubscribe()
+},[auth,router])
+console.log(user);
+
+
+
+
 const navVisibilityHandler = () => {
 
     setNavIsVisible((curState) => {
         return !curState;
     });
 }
-const logoutHandler = ()=>{
+const logoutHandler = async () => {
+  try {
+    await signOut(auth); // Assuming auth is your Firebase authentication instance
+    setLoggedIn(false);
+    router.push('/login');
+    toast.success('Logout successful!');
+  } catch (error) {
+    console.error('Logout error:', error.message);
+    toast.error('An error occurred during logout. Please try again.');
+  }
+};
 
-        }
         return (
             <section className="sticky top-0 left-0 right-0 z-50 bg-white">
             <header className='container mx-auto px-5 flex justify-between py-4 items-center'>

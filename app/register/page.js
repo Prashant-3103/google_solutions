@@ -4,7 +4,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AvatarGenerator } from "random-avatar-generator";
 import Link from "next/link";
-
+import {auth,firestore} from "../../lib/firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import toast from "react-hot-toast";
 const Page = () => {
     const[name,setName] = useState("")
     const[email,setEmail] = useState("")
@@ -55,8 +58,15 @@ if(!validateForm()) {
     setLoading(false)
     return
 }
-alert("Successfully registered")
-
+const userCredentials = await createUserWithEmailAndPassword(auth,email,password)
+const user = userCredentials.user
+const docRef = doc(firestore,'users',user.uid)
+await setDoc(docRef,{
+    name,email,avatarUrl
+})
+router.push('/')
+toast.success("successfully registered")
+setErrors({})
     } catch (error) {
 console.log(error);
     }
