@@ -17,7 +17,7 @@ const unsubscribe = onAuthStateChanged(auth,async(user)=>{
     if(user){
         const useRef = doc(firestore,"users",user.uid)
         const userSnap = await getDoc(useRef)
-        const userData = userSnap.data()
+        const userData = ({id: userSnap.id, ...userSnap.data()})
         setUser(userData)
     }
     else{
@@ -33,7 +33,7 @@ return ()=>unsubscribe()
     return (
         <div className="flex">
             <div className="flex-shrink-0 w-3/12   ">
-                <Users user={user}/>
+                <Users userData={user}/>
             </div>
             <div className="flex-grow w-3/12 ">
                <ChatRoom userData={user}/>
