@@ -13,11 +13,24 @@ const ChatRoom = ({user,selectedChatRoom}) => {
   const [message,setMessage] = useState('')
   const[messages, setMessages] = useState([])
   const messagesContainerRef = useRef(null)
+const [image,setImage] = useState(null) //for uploading image
+
+useEffect(()=>{
+if(!chatRoomId) {
+    return}
+const unsubscribe = onSnapshot(query(collection(firestore,'messages'),where('chatRoomId','==',chatRoomId),orderBy('time','asc')),snapshot=>{
+const messagesData = snapshot.docs.map((doc)=>({id: doc.id, ...doc.data()}))
+console.log(messagesData);
+setMessages(messagesData)
+})
+return unsubscribe
+},[chatRoomId])
+console.log(messages);
 
   const sendMessage= async (e)=>{
-    const messageCollection = collection(firestore,'messages')
-    if(message.trim()===''){
-        return
+    const messagesCollection = collection(firestore,'messages')
+    if(message =='' && !image){
+        return;
     }
     try {
         const messageData = {
@@ -25,16 +38,17 @@ const ChatRoom = ({user,selectedChatRoom}) => {
             senderId:me?.id,
             content: message,
             time: serverTimestamp(),
-            image: "",
-            messageType: 'text'
+            image: image,
+            messageType: !image ? "text" : "image"
         }
-     await addDoc(messageCollection,messageData)
+     await addDoc(messagesCollection,messageData)
      setMessage('')
+     setImage(null)
 
      //update chatroom last message
      const chatroomRef = doc(firestore,'chatrooms',chatRoomId)
      await updateDoc(chatroomRef,{
-        lastMessage:message
+        lastMessage:message ? message : "Image",
      })
 
     } catch (error) {
@@ -47,10 +61,10 @@ console.log(error);
     <div className='flex flex-col h-screen'>
 <div className='flex-1 overflow-y-auto p-10'>
 {messages.map((message)=>(
-<MessageCard key={message.id} message={message} user={"arfath"}/>
+<MessageCard key={message.id} message={message} me={me} other={other}/>
 ))}
 </div>
-<MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage}/>
+<MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage} image={image} setImage={setImage}/>
     </div>
   )
 }
