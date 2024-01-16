@@ -1,14 +1,5 @@
 import React from 'react';
-
-interface UserCardProps {
-  name: string;
-  avatarUrl: string;
-  latestMessageText: string;
-  time: string;
-  type: string; // You might want to replace 'string' with a more specific type
-}
-
-const UserCard: React.FC<UserCardProps> = ({ name, avatarUrl, latestMessageText, time, type }) => {
+const UserCard = ({ name, avatarUrl, latestMessageText, time, type }) => {
   return (
     <div className='flex items-center p-4 border-b border-gray-200 relative hover:cursor-pointer '>
       <div className='flex-shrink-0 mr-4 relative'>

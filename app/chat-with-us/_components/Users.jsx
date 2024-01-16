@@ -6,7 +6,7 @@ import { collection,onSnapshot,query,addDoc,serverTimestamp,where,getDocs, doc, 
 import { getAuth,signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-const Users = ({ userData }) => {
+const Users = ({ userData,setSelectedChatRoom}) => {
   const [activeTab, setActiveTab] = useState('users');
 const [loading,setLoading] = useState(false)
 const[loading2, setLoading2] = useState(false)
@@ -48,7 +48,7 @@ setLoading(true)
 if(!userData?.id){
   return
 }
-const chatroomsQuery = query(collection(firestore,'chatrooms'),where('users','array-contains',userData.id))
+const chatroomsQuery = query(collection(firestore,'chatrooms'),where('users','array-contains',userData?.id))
 const unsubscribeChatrooms = onSnapshot(chatroomsQuery,(QuerySnapshot)=>{
   const chatrooms = QuerySnapshot.docs.map((doc)=>({
     id: doc.id,
@@ -57,10 +57,11 @@ const unsubscribeChatrooms = onSnapshot(chatroomsQuery,(QuerySnapshot)=>{
   setUserChatRooms(chatrooms)
   setLoading(false)
 })
-return ()=> unsubscribeChatrooms()
+return unsubscribeChatrooms
 },[userData])
 
 
+//create chat
 
 const createChat = async(user)=>{
 //chatroom already exists
@@ -94,6 +95,18 @@ toast.error("failed")
 }
 }
 
+//open chatroom
+
+const openChat = async (chatroom)=>{
+const data = {
+  id: chatroom.id,
+  myData:userData,
+  otherData: chatroom.usersData[chatroom.users.find((id) => id !== userData?.id)]
+}
+setSelectedChatRoom(data);
+}
+
+
   return (
     <div className='shadow-lg   h-screen overflow-auto  mt-4 mb-20'>
       <div className='flex justify-between p-4'>
@@ -122,7 +135,7 @@ toast.error("failed")
             <h1 className='px-4 text-base font-semibold'>Chat rooms</h1>
             {
               userChatRooms.map((chatroom)=>(
-                <div key={chatroom.id} onClick={()=>{createChat(chatroom)}} >
+                <div key={chatroom.id} onClick={()=>{openChat(chatroom)}} >
    <UserCard
                   name={chatroom.usersData[chatroom.users.find((id) => id !== userData?.id)].name}
                   avatarUrl={chatroom.usersData[chatroom.users.find((id) => id !== userData?.id)].avatarUrl}

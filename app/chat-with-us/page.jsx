@@ -11,7 +11,7 @@ const page = () => {
     const auth = getAuth(app)
     const [user,setUser] = useState(null)
     const router = useRouter()
-
+const [selectedChatRoom, setSelectedChatRoom] = useState(null)
 useEffect(()=>{
 const unsubscribe = onAuthStateChanged(auth,async(user)=>{
     if(user){
@@ -33,10 +33,10 @@ return ()=>unsubscribe()
     return (
         <div className="flex">
             <div className="flex-shrink-0 w-3/12   ">
-                <Users userData={user}/>
+                <Users userData={user} setSelectedChatRoom={setSelectedChatRoom}/>
             </div>
             <div className="flex-grow w-3/12 ">
-               <ChatRoom userData={user}/>
+               <ChatRoom user={user} selectedChatRoom={selectedChatRoom}/>
             </div>
 
         </div>
