@@ -10,4 +10,10 @@
   .active-editor-btn {
       @apply text-slate-800 bg-slate-200
   }
+
 }
+
+.glass-container{
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust the alpha value for transparency */
+   backdrop-filter: blur(10px); /* Adjust the blur value for the desired effect */
+  }

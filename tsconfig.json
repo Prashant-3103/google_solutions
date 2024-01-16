@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/ui/Header.jsx", "app/chat-with-us/_components/Users.jsx", "app/chat-with-us/_components/ChatRoom.jsx", "app/chat-with-us/_components/MessageCard.jsx", "app/chat-with-us/page.jsx", "app/chat-with-us/_components/MessageInput.jsx", "app/chat-with-us/_components/UserCard.jsx"],
   "exclude": ["node_modules"]
 }

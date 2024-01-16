@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Footer from '@/components/ui/Footer'
+import Header from '@/components/ui/Header'
+import {Toaster} from "react-hot-toast"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -19,7 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-
+        <Toaster position='top-center'/>
+<Header/>
         {children}
 <Footer/>
         </body>
