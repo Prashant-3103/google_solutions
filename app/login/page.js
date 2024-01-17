@@ -62,12 +62,9 @@ if(error.message==="Firebase: Error (auth/invalid-credential)."){
     setLoading(false)
 }
     return (
-        <div className="flex justify-center items-center  p-10 m-2">
+        <div className="flex justify-center items-center  p-10 m-2 ">
 <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-2xl shadow-lg p-10">
 <h1 className="text-xl text-center font-semibold text-dark-spansoft">Feel Free to <span className="font-bold text-dark-soft">Login</span> and <span className="font-bold text-dark-soft">Chat</span> with us</h1>
-
-
-
 <div>
     <label className="label"><span className="text-base label-text font-semibold">Email</span></label>
     <input type="email" placeholder="Enter your email" className="w-full input input-bordered" value={email} onChange={(e)=>setEmail(e.target.value)}/>

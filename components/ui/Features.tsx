@@ -1,48 +1,62 @@
 import Image from "next/image";
-
+import Link from 'next/link'
 const Features = () => {
   return (
-    <section className="container mx-auto px-6 p-10">
-      <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
-        Features
-      </h2>
-      <div className="flex items-center flex-wrap mb-8 md:w-[70%] lg:w-[70%]">
-      <div className="w-full md:w-1/2">
-          <img src="./image1.jpeg" alt="Monitoring" />
-        </div>
-        <div className="w-full md:w-1/2 mb-4 md:mb-0">
-          <h4 className="text-3xl text-gray-800 font-bold mb-3 md:items-center">Exercise Metric</h4>
-          <p className="text-gray-600 mb-8">
-            Our Smart Health Monitoring Wristwatch is able to capture your vitals while you exercise. You can create different categories of exercises and can track your vitals on the go.
-          </p>
-        </div>
+    <>
+    <section className='container w-full mx-auto flex flex-col px-5 py-5 lg:flex-row   relative bg-[#eba7e7] '>
+       <div className=' lg:block lg:w-1/2 relative z-20'>
+        <img className='object-contain h-[400px] w-[400px] rounded-lg ml-[100px] mt-10 ' src="/photo.png" alt="users are reading articles" />
       </div>
+    <div className='mt-10 lg:w-1/2 z-10'>
+        <h1 className='font-roboto text-3xl text-center font-bold text-dark-soft lg:text-4xl xl:text-5xl  md:text-5xl lg:text-left lg:max-w-[540px] '>
+        AI Chat Button
+        </h1>
+        <p className='text-dark-light mt-4 text-center lg:text-base xl:text-xl  md:text-xl lg:text-left'>
+        Let's talk empowerment! Our friendly AI, armed with legal smarts, is here to guide you step by step. Share your story, get personalized support, and decide your next steps with ease. Chat with our empathetic friend now!
 
-      <div className="flex items-center flex-wrap mb-8 md:w-[70%] lg:w-[70%] md:mx-80">
-        <div className="w-full md:w-1/2 mb-4 md:mb-0">
-          <img src="./image2.jpeg" alt="Reporting" />
-        </div>
-        <div className="w-full md:w-1/2 pl-0 md:pl-10">
-          <h4 className="text-3xl text-gray-800 font-bold mb-3">Reporting</h4>
-          <p className="text-gray-600 mb-8">
-            Our Smart Health Monitoring Wristwatch can generate a comprehensive report on your vitals depending on your settings either daily, weekly, monthly, quarterly, or yearly.
-          </p>
-        </div>
-      </div>
 
-      <div className="flex items-center flex-wrap md:w-[70%] lg:w-[70%] ">
-      <div className="w-full md:w-1/2">
-          <img src="image2.jpeg" alt="Syncing" />
+        </p>
+        <div className='flex flex-col gap-y-2.5 mt-10 lg:mt-6 xl:mt-10 relative'>
         </div>
-        <div className="w-full md:w-1/2 mb-4 md:mb-0">
-          <h4 className="text-3xl text-gray-800 font-bold mb-3">Syncing</h4>
-          <p className="text-gray-600 mb-8">
-            Our Smart Health Monitoring Wristwatch allows you to sync data across all your mobile devices whether iOS, Android, or Windows OS and also to your laptop whether MacOS, GNU/Linux, or Windows OS.
-          </p>
         </div>
+    </section>
+    <section className='container w-full mx-auto flex flex-col px-5 py-5 lg:flex-row   relative bg-[#ecb9e8] '>
+    <div className='mt-10 lg:w-1/2 z-10'>
+        <h1 className='font-roboto text-3xl text-center font-bold text-dark-soft lg:text-4xl xl:text-5xl  md:text-5xl lg:text-left lg:max-w-[540px] '>
+        Community and One to one chat Button:
+        </h1>
+        <p className='text-dark-light mt-4 text-center lg:text-base xl:text-xl  md:text-xl lg:text-left'>
+        "Join our supportive community. Connect with survivors, share experiences, and find strength in unity. You are not alone."
 
+
+        </p>
+        <div className='flex flex-col gap-y-2.5 mt-10 lg:mt-6 xl:mt-10 relative'>
+        </div>
+        </div>
+        <div className=' lg:block lg:w-1/2 relative z-20'>
+        <img className='object-contain h-[400px] w-[400px] rounded-lg ml-[100px] mt-10 ' src="/community.png" alt="users are reading articles" />
       </div>
     </section>
+    <section className='container w-full mx-auto flex flex-col px-5 py-5 lg:flex-row   relative bg-[#eba7e7] '>
+       <div className=' lg:block lg:w-1/2 relative z-20'>
+        <img className='object-contain h-[400px] w-[400px] rounded-lg ml-[100px] mt-10 ' src="/help.png" alt="users are reading articles" />
+      </div>
+    <div className='  mt-10 lg:w-1/2 z-10'>
+        <h1 className='font-roboto text-3xl text-center font-bold text-dark-soft lg:text-4xl xl:text-5xl  md:text-5xl lg:text-left lg:max-w-[540px] '>
+        Nearest HelpCenter :
+        </h1>
+        <p className='text-dark-light mt-4 text-center lg:text-base xl:text-xl  md:text-xl lg:text-left'>
+        Centers providing free, local support and services for victims and survivors of rape, sexual assault, sexual abuse and all other forms of sexual violence .
+
+        </p>
+        <div className='flex flex-col gap-y-2.5 mt-10 lg:mt-6 xl:mt-10 relative'>
+        </div>
+        </div>
+
+    </section>
+
+    </>
+
   );
 };
 

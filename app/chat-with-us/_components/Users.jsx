@@ -108,7 +108,7 @@ setSelectedChatRoom(data);
 
 
   return (
-    <div className='shadow-lg   h-screen overflow-auto  mt-4 mb-20'>
+    <div className='shadow-lg   h-screen overflow-auto  mt-4 mb-20 bg-[#cf97cd]'>
       <div className='flex justify-between p-4'>
         <button
           onClick={() => handleTabClick('users')}

@@ -79,7 +79,7 @@ function MessageInput({ sendMessage, message, setMessage,image,setImage }) {
         onChange={(e) => setMessage(e.target.value)}
         type='text'
         placeholder='Type a message...'
-        className='flex-1 border-none p-2 outline-none'
+        className='flex-1 rounded-lg bg-[#fae2f9]  p-2 outline-red-200 '
       />
 
       <FaPaperPlane onClick={() => sendMessage()} className='text-blue-500 cursor-pointer ml-2' />

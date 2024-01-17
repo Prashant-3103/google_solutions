@@ -31,7 +31,7 @@ return ()=>unsubscribe()
 },[auth,router])
 
     return (
-        <div className="flex">
+        <div className="flex h-screen">
             <div className="flex-shrink-0 w-3/12   ">
                 <Users userData={user} setSelectedChatRoom={setSelectedChatRoom}/>
             </div>
