@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className='bg-dark-pinkHard'>
+    <footer className='bg-[#f980ff]'>
       <div className="py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
@@ -17,7 +17,7 @@ export default function Footer() {
                 {/* Logo */}
              <img className='w-16 object-cover rounded-full border-4 border-gray-300 hover:border-blue-200 shadow-lg hover:shadow-xl transition duration-300' src='./logo.jpg'/>
               </div>
-              <div className="text-dark-soft font-bold">Amidst myths about crimes against women, from domestic violence to cybercrime, finding clear guidance can be overwhelming. Your voice matters, and we're here to simplify the journey, empowering survivors with clarity and unwavering support.</div>
+              <div className="text-dark-soft font-bold">We're here to simplify the journey, empowering survivors with clarity and unwavering support.</div>
             </div>
 
             {/* 2nd, 3rd and 4th blocks */}

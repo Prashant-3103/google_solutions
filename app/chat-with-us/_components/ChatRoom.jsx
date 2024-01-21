@@ -14,7 +14,6 @@ const ChatRoom = ({user,selectedChatRoom}) => {
   const[messages, setMessages] = useState([])
   const messagesContainerRef = useRef(null)
 const [image,setImage] = useState(null) //for uploading image
-
 useEffect(()=>{
 if(!chatRoomId) {
     return}
@@ -56,9 +55,15 @@ console.log(error);
     }
   }
 
-
   return (
-    <div className='flex flex-col h-screen'>
+    <div className='mx-auto max-w-6xl -mt-[17px] px-6 lg:px-8'>
+      <div className='mt-16 flow-root sm:mt-24'>
+        <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
+        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col items center justify-center  rounded-full h-[70px]'>
+        <img src={selectedChatRoom?.otherData.avatarUrl} alt='avatar' className='w-10 h-10 rounded-full object-cover mt-3 ml-2  absolute'/>
+      <img src={selectedChatRoom?.myData.avatarUrl} alt='avatar' className='w-10 h-10 rounded-full object-cover mt-3 left-20 relative'/>
+        </div>
 <div className='flex-1 overflow-y-auto p-10'>
 {messages.map((message)=>(
 <MessageCard key={message.id} message={message} me={me} other={other}/>
@@ -66,6 +71,11 @@ console.log(error);
 </div>
 <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage} image={image} setImage={setImage}/>
     </div>
+        </div>
+      </div>
+    </div>
+
+
   )
 }
 

@@ -3,7 +3,6 @@ import moment from 'moment'
 
 const MessageCard= ({ message,me,other}) => {
   const isMessageFromMe = message.senderId === me.id;
-
   const timeAgo = (time)=>{
     const date = time?.toDate()
     const momentDate = moment(date)
