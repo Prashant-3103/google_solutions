@@ -63,8 +63,6 @@ if(!validateForm()) {
     return
 }
 
-const userType = email === "pappi3103@gmail.com" || "sharicharana.211ch024@nitk.edu.in" || "upadhayayanshum@gmail.com" || "md8arfath@gmail.com" ? "admin" : "user";
-
 const userCredentials = await createUserWithEmailAndPassword(auth,email,password,userType)
 const user = userCredentials.user
 const docRef = doc(firestore,'users',user.uid)
