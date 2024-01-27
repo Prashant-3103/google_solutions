@@ -31,9 +31,52 @@ console.log(user);
 
 if(user?.userType==='admin'){
 return(
- <div>
-  create button
- </div>
+  <div className='mx-auto lg:-mt-[65px] max-w-6xl  px-6 lg:px-8'>
+      <div className='mt-16 flow-root sm:mt-24'>
+        <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
+        <div className='flex h-screen flex-col'>
+<div className='flex-1 overflow-y-auto p-10'>
+
+            <h1 className='font-roboto text-3xl  font-bold text-dark-soft lg:text-7xl  lg:justify-center lg:items-center xl:text-5xl  md:text-5xl lg:text-center lg:max-w-[540px] '>
+           Create <span className='text-dark-spansoft italic font-cursive'> C</span>ommunities
+           </h1>
+           <div className="mockup-browser mt-6  border border-gray-400 bg-base-300">
+  <div className="mockup-browser-toolbar ">
+    <div className="input"><span className="text-dark-spansoft text-opacity-80 text-lg font-medium">Create a community, a safe place..</span></div>
+  </div>
+  <div className="flex justify-center px-4 py-16 bg-base-200">{/* Open the modal using document.getElementById('ID').showModal() method */}
+<button className="btn border-2 mt-5 lg:mt-9 border-zinc-300/30 text-[1.5rem] lg:text-zinc-500 px-6 py-2 rounded-full text-full-500 font-semibold bg-gray-300/40 hover:bg-dark-pinkHard/90 hover:text-white transition-all duration-300 lg:h-[60px] lg:w-[60%] lg:mb-8 " onClick={()=>document.getElementById('my_modal_1').showModal()}>Create community</button>
+<dialog id="my_modal_1" className="modal text-red-50">
+  <div className="modal-box bg-white/80">
+    <h3 className="font-bold text-lg text-black">Hello!</h3>
+    <p className="py-4 text-black/80">Press ESC key or click the button below to close</p>
+    <div className="modal-action">
+      <form method="dialog">
+<div className="flex justify-center items-center  p-10 m-2">
+<div>
+    <label className="label"><span className="text-base label-text font-semibold">Name</span></label>
+    <input type="text" placeholder="Enter your name" className="w-full input input-bordered" />
+    <label className="label"><span className="text-base label-text font-semibold">Name</span></label>
+    <input type="text" placeholder="Enter your name" className="w-full input input-bordered" />
+    <label className="label"><span className="text-base label-text font-semibold">Name</span></label>
+    <input type="text" placeholder="Enter your name" className="w-full input input-bordered" />
+</div>
+</div>
+
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog></div>
+</div>
+
+{/*  */}
+
+</div>
+    </div>
+        </div>
+      </div>
+    </div>
 )
 }
 
