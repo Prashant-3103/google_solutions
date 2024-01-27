@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 const navItemsInfo = [
     { name: "Home", type: "link", href: "/" },
     { name: "Help Centers",type: "link", href: "/help-centers" },
-    { name: "Chat with us",type: "dropdown",items: [{title: 'Community Chat', href: "/community"},
+    { name: "Chat with us",type: "dropdown",items: [{title: 'Community Chat', href: "/community-chat"},
     {title: 'Direct Chat', href: "/chat-with-us"}]  },
     { name: "AI chatbot",type: "link", href: "/chat-with-ai" },
 ];

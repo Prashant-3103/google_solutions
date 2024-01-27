@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 const Page = () => {
     const[name,setName] = useState("")
     const[email,setEmail] = useState("")
+    const [userType, setUserType] = useState("user")
     const[password, setPassword] = useState("")
     const[confirmPassword, setConfirmPassord]= useState("")
     const [avatarUrl, setAvatarUrl] = useState("")
@@ -29,7 +30,6 @@ setAvatarUrl(generateRandomAvatar())
     useEffect(()=>{
 setAvatarUrl(generateRandomAvatar())
     },[])
-
 const validateForm = ()=>{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const newErrors = {}
@@ -38,7 +38,10 @@ const validateForm = ()=>{
     }
     if(!email.trim() || !emailRegex.test(email)){
         newErrors.email="Email is invalid"
+
     }
+
+
     if(password.length<6){
         newErrors.password="Password must be at least 6 characters"
     }
@@ -46,6 +49,7 @@ const validateForm = ()=>{
     {
         newErrors.confirmPassword="Passwords do not match"
     }
+
     setErrors(newErrors)
     return Object.keys(newErrors).length===0;
 }
@@ -58,17 +62,21 @@ if(!validateForm()) {
     setLoading(false)
     return
 }
-const userCredentials = await createUserWithEmailAndPassword(auth,email,password)
+
+const userType = email === "pappi3103@gmail.com" || "sharicharana.211ch024@nitk.edu.in" || "upadhayayanshum@gmail.com" || "md8arfath@gmail.com" ? "admin" : "user";
+
+const userCredentials = await createUserWithEmailAndPassword(auth,email,password,userType)
 const user = userCredentials.user
 const docRef = doc(firestore,'users',user.uid)
 await setDoc(docRef,{
-    name,email,avatarUrl
+    name,email,avatarUrl,userType
 })
 router.push('/')
 toast.success("successfully registered")
 setErrors({})
     } catch (error) {
 console.log(error);
+toast.error(error.message)
     }
     setLoading(false)
 }
