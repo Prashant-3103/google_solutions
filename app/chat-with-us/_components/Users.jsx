@@ -9,7 +9,6 @@ import { useRouter } from 'next/navigation';
 const Users = ({ userData,setSelectedChatRoom}) => {
   const [activeTab, setActiveTab] = useState('users');
 const [loading,setLoading] = useState(false)
-const[loading2, setLoading2] = useState(false)
 const[users,setUsers] = useState([])
 const router = useRouter()
 const[userChatRooms,setUserChatRooms] = useState([])

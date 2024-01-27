@@ -2,13 +2,61 @@
 import { useState ,useEffect} from "react";
 import { firestore,app } from "@/lib/firebase";
 import { getAuth,onAuthStateChanged } from "firebase/auth";
-import { doc,getDoc } from "firebase/firestore";
+import { addDoc, collection, doc,getDoc, serverTimestamp } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
 const page = () => {
+  const [name, setName] = useState("")
+  const [description,setDescription] = useState("")
+  const [permitted, setPermitted] = useState(false)
+  const [users, setUsers] = useState([])
+  const[errors, setErrors] = useState({})
+  const [loading,setLoading] = useState(false)
+
+  const validateForm = ()=>{
+    const newErrors = {}
+    if(!name.trim()){
+        newErrors.name="Name is required"
+    }
+
+    if (description.length <= 10) {
+      newErrors.description = "Description should be above 10 characters";
+    }
+    setErrors(newErrors)
+    return Object.keys(newErrors).length===0;
+}
+
+const handleSubmit = async(e)=>{
+  e.preventDefault()
+  setLoading(true)
+  try {
+const communityCollection = collection(firestore,"communities")
+if(!validateForm()) {
+  setLoading(false)
+  return
+}
+const communityData = {
+  name: name,
+  description: description,
+  time: serverTimestamp(),
+  users,
+  permitted
+}
+await addDoc(communityCollection,communityData)
+    setName("")
+    setDescription("")
+setLoading(false)
+toast.success("created community")
+  } catch (error) {
+console.log(error);
+toast.error(error.message)
+  }
+  setLoading(false)
+}
+
+
   const auth = getAuth(app)
-  const [user,setUser] = useState<{ id: string } | null>(null)
+  const [user,setUser] = useState(null)
   const router = useRouter()
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth,async(user)=>{
@@ -51,19 +99,24 @@ return(
     <h3 className="font-bold text-lg text-black">Hello!</h3>
     <p className="py-4 text-black/80">Press ESC key or click the button below to close</p>
     <div className="modal-action">
-      <form method="dialog">
-<div className="flex justify-center items-center  p-10 m-2">
-<div>
-    <label className="label"><span className="text-base label-text font-semibold">Name</span></label>
-    <input type="text" placeholder="Enter your name" className="w-full input input-bordered" />
-    <label className="label"><span className="text-base label-text font-semibold">Name</span></label>
-    <input type="text" placeholder="Enter your name" className="w-full input input-bordered" />
-    <label className="label"><span className="text-base label-text font-semibold">Name</span></label>
-    <input type="text" placeholder="Enter your name" className="w-full input input-bordered" />
+      <form onSubmit={handleSubmit} method="dialog">
+<div className="flex justify-center  p-10 m-2">
+<div className="flex  flex-col">
+    <label className="label"><span className="text-base label-text font-bold text-black">Name</span></label>
+    <input type="text" placeholder="Type here" className="input text-black  input-bordered w-full max-w-xs" value={name} onChange={(e)=>setName(e.target.value)} />
+    {errors.name && <span className="text-sm text-red-500">{errors.name}</span>}
+    <label className="label"><span className="text-base label-text text-black font-bold" >Description</span></label>
+    <textarea className="textarea textarea-bordered text-black" placeholder="Description" value={description} onChange={(e)=>setDescription(e.target.value)}></textarea>
+    {errors.description && <span className="text-sm text-red-500">{errors.description}</span>}
 </div>
 </div>
-
-        <button className="btn">Close</button>
+<button type="submit" className="btn bg-dark-hard/70 hover:bg-dark-light text-dark-spansoft"  onClick={async () => {
+      if (validateForm()) {
+        await document.getElementById('my_modal_1').close();
+      }
+    }}>
+    Submit
+  </button>
       </form>
     </div>
   </div>
