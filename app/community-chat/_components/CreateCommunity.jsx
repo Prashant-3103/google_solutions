@@ -1,14 +1,12 @@
 "use client"
-import { useState ,useEffect} from "react";
-import { firestore,app } from "@/lib/firebase";
-import { getAuth,onAuthStateChanged } from "firebase/auth";
-import { addDoc, collection, doc,getDoc, serverTimestamp } from "firebase/firestore";
-import { useRouter } from "next/navigation";
+import { useState} from "react";
+import { firestore } from "@/lib/firebase";
+import { addDoc, collection,doc,serverTimestamp, updateDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
-const CreateCommunity = () => {
+import PendingRequests from "./PendingRequests"
+const CreateCommunity = ({user}) => {
   const [name, setName] = useState("")
   const [description,setDescription] = useState("")
-  const [permitted, setPermitted] = useState(false)
   const [users, setUsers] = useState([])
   const[errors, setErrors] = useState({})
   const [loading,setLoading] = useState(false)
@@ -35,14 +33,23 @@ if(!validateForm()) {
   setLoading(false)
   return
 }
+const userObject = { id: user.id, status: "admin" }
 const communityData = {
   name: name,
   description: description,
   time: serverTimestamp(),
-  users,
-  permitted
+  users: [...users, userObject],
+  createdBy: user.id,
 }
-await addDoc(communityCollection,communityData)
+
+//add community to cmmunities collection
+const newCommunityRef =await addDoc(communityCollection,communityData)
+
+const userDocRef = doc(firestore,'users',user.id)
+await updateDoc(userDocRef,{
+  createdCommunities: [...user.createdCommunities,newCommunityRef.id]
+})
+
     setName("")
     setDescription("")
 setLoading(false)
@@ -55,27 +62,8 @@ toast.error(error.message)
 }
 
 
-  const auth = getAuth(app)
-  const [user,setUser] = useState(null)
-  const router = useRouter()
-  useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth,async(user)=>{
-        if(user){
-            const useRef = doc(firestore,"users",user.uid)
-            const userSnap = await getDoc(useRef)
-            const userData = ({id: userSnap.id,...userSnap.data()})
-            setUser(userData)
-        }
-        else{
-            setUser(null)
-            router.push('/login')
-            toast.error("Please log in first to chat")
-        }
 
-    })
-    return ()=>unsubscribe()
-    },[auth,router])
-console.log(user);
+
 
 if(user?.userType==='admin'){
 return(
@@ -90,7 +78,8 @@ return(
            </h1>
            <div className="mockup-browser mt-6  border border-gray-400 bg-base-300">
   <div className="mockup-browser-toolbar ">
-    <div className="input"><span className="text-dark-spansoft text-opacity-80 text-lg font-medium">Create a community, a safe place..</span></div>
+    <div className="input"><span className="text-dark-spansoft text-opacity-80 text-lg font-medium">Create a community, a safe place..</span>
+    </div>
   </div>
   <div className="flex justify-center px-4 py-16 bg-base-200">{/* Open the modal using document.getElementById('ID').showModal() method */}
 <button className="btn border-2 mt-5 lg:mt-9 border-zinc-300/30 text-[1.5rem] lg:text-zinc-500 px-6 py-2 rounded-full text-full-500 font-semibold bg-gray-300/40 hover:bg-dark-pinkHard/90 hover:text-white transition-all duration-300 lg:h-[60px] lg:w-[60%] lg:mb-8 " onClick={()=>document.getElementById('my_modal_1').showModal()}>Create community</button>
@@ -125,25 +114,17 @@ return(
 
 {/*  */}
 
+<PendingRequests user={user}/>
 </div>
+
     </div>
         </div>
       </div>
+
     </div>
 )
 }
 
-if(user?.userType==='user'){
-return(
-  <div>join community</div>
-)
-}
-
-  return (
-    <div>
-Community
-    </div>
-  )
 }
 
 export default CreateCommunity

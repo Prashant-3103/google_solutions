@@ -26,7 +26,7 @@ const Features = () => {
           <h1 className='font-roboto text-3xl font-bold text-dark-soft lg:text-4xl xl:text-5xl md:text-5xl lg:text-left lg:max-w-[540px]'>
             Community and One to one chat Button:
           </h1>
-          <p className='text-dark-light lg:text-6xl lg:font-semibold mt-4 lg:text-base xl:text-xl md:text-xl lg:text-left'>
+          <p className='text-dark-light lg:text-6xl lg:font-semibold mt-4  xl:text-xl md:text-xl lg:text-left'>
             "Join our supportive community. Connect with survivors, share experiences, and find strength in unity. You are not alone."
           </p>
           <div className='flex flex-col gap-y-2.5 mt-10 lg:mt-6 xl:mt-10 relative'>

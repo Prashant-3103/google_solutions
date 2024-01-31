@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 const Page = () => {
     const[name,setName] = useState("")
     const[email,setEmail] = useState("")
+    const[community,setCommunity] = useState([])
+    const [createdCommunities, setCreatedCommunities] = useState([])
     const [userType, setUserType] = useState("user")
     const[password, setPassword] = useState("")
     const[confirmPassword, setConfirmPassord]= useState("")
@@ -38,7 +40,6 @@ const validateForm = ()=>{
     }
     if(!email.trim() || !emailRegex.test(email)){
         newErrors.email="Email is invalid"
-
     }
 
 
@@ -63,11 +64,11 @@ if(!validateForm()) {
     return
 }
 
-const userCredentials = await createUserWithEmailAndPassword(auth,email,password,userType)
+const userCredentials = await createUserWithEmailAndPassword(auth,email,password,userType,community,createdCommunities)
 const user = userCredentials.user
 const docRef = doc(firestore,'users',user.uid)
 await setDoc(docRef,{
-    name,email,avatarUrl,userType
+    name,email,avatarUrl,userType,community,createdCommunities
 })
 router.push('/')
 toast.success("successfully registered")
