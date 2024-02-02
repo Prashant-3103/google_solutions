@@ -3,7 +3,7 @@ import { firestore} from "@/lib/firebase";
 import { collection, onSnapshot, query, doc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-
+import {PanelTopOpen} from "lucide-react"
 const PendingRequests = ({user}) => {
     const [loading, setLoading] = useState(false);
   const [community, setCommunity] = useState([]);
@@ -107,11 +107,11 @@ if (existingCommunityIndex !== -1) {
   return (
 <div className="collapse bg-base-200 ">
   <input type="checkbox" />
-  <div className="collapse-title text-xl font-medium">
-  <button className="border-2 mt-5 lg:mt-9 border-blue-500 text-[1.5rem] lg:text-zinc-500 px-6 py-2 rounded-full text-full-500 font-semibold bg-sky-100/50 hover:bg-dark-pinkHard hover:text-white transition-all duration-300  lg:mb-8" onClick={()=>document.getElementById('my_modal_2').showModal()} >Pending Requests</button>
+  <div className="collapse-title  text-xl font-medium sm:text-base sm:font-roboto sm:font-semibold flex justify-center items-center lg:items-start">
+  <button className="border-2  mt-5 lg:mt-9 border-blue-500 text-[1.5rem] lg:text-zinc-500 px-6 py-2 rounded-full text-full-500 font-semibold bg-sky-100/50 hover:bg-dark-pinkHard hover:text-white transition-all duration-300  lg:mb-8" onClick={()=>document.getElementById('my_modal_2').showModal()} >Pending Requests</button>
   </div>
-  <div className="collapse-content">
-  <div className="overflow-x-auto">
+  <div className="collapse-content  flex justify-center items-center ">
+  <div className="overflow-x-auto ">
   <table className="table">
     {/* head */}
     <thead>
@@ -129,7 +129,7 @@ if (existingCommunityIndex !== -1) {
 <th>{index+1}</th>
 <th>{communitiesData.name}</th>
 <h1>{/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" onClick={()=>document.getElementById(`my_modal_${communitiesData.id}`).showModal()}>open modal</button>
+<button className="inline-flex items-center justify-center whitespace-nowrap  text-sm font-medium ring-offset-background text-primary underline-offset-4 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3" onClick={()=>document.getElementById(`my_modal_${communitiesData.id}`).showModal()}><PanelTopOpen /></button>
 <dialog id={`my_modal_${communitiesData.id}`} className="modal">
   <div className="modal-box bg-slate-100">
     <h3 className="font-bold text-lg">Hello!</h3>
@@ -147,7 +147,7 @@ if (existingCommunityIndex !== -1) {
     <tbody>
     <tr className="bg-base-200">
         <td>{user.name}</td>
-        <td><button className="border-2 mt-5 lg:mt-9 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold bg-sky-100/50 hover:bg-dark-pinkHard hover:text-white transition-all duration-300  " onClick={() => handleAceeptRequest(user.id,communitiesData.id)}>{buttonMsg}</button></td>
+        <td><button className="border-2 mt-5 lg:mt-9 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold bg-sky-100/50 hover:bg-dark-pinkHard hover:text-white transition-all duration-300  " onClick={() => handleAceeptRequest(user.id,communitiesData.id)}>accept</button></td>
       </tr>
     </tbody>
 

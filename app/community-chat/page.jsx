@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { app, firestore } from '@/lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
+
 import toast from "react-hot-toast";
 const page = () => {
   const auth = getAuth(app)
@@ -33,6 +34,7 @@ console.log(user);
 
   return(
     <>
+   
 <CreateCommunity user={user}/>
 <JoinCommunity user={user}/>
     </>

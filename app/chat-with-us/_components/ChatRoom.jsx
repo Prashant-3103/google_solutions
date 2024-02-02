@@ -6,7 +6,7 @@ import { firestore } from '@/lib/firebase'
 import { addDoc,collection,doc,serverTimestamp,onSnapshot,query,where,orderBy,updateDoc } from 'firebase/firestore'
 
 const ChatRoom = ({user,selectedChatRoom}) => {
-    console.log(selectedChatRoom);
+    console.log("hey",selectedChatRoom);
   const me = selectedChatRoom?.myData
   const other = selectedChatRoom?.otherData
   const chatRoomId = selectedChatRoom?.id
@@ -56,7 +56,7 @@ console.log(error);
   }
 
   return (
-    <div className='mx-auto max-w-6xl -mt-[17px] px-6 lg:px-8'>
+    <div className='mx-auto max-w-3xl -mt-[17px] px-6 lg:px-8 w-[100%]'>
       <div className='mt-16 flow-root sm:mt-24'>
         <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
         <div className='flex flex-col h-screen'>
@@ -69,7 +69,7 @@ console.log(error);
            Join <span className='text-dark-spansoft italic font-cursive'>Chat Rooms</span>
            </h1>
         )}
-<div className='flex-1 overflow-y-auto p-10'>
+<div className='flex-1  overflow-y-auto p-1'>
 {messages.map((message)=>(
 <MessageCard key={message.id} message={message} me={me} other={other}/>
 ))}
