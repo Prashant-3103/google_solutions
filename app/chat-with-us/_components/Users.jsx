@@ -6,7 +6,7 @@ import { collection,onSnapshot,query,addDoc,serverTimestamp,where,getDocs, doc, 
 import { getAuth,signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import { BookOpen, List, MenuIcon, MessageSquareText, Users2, X } from 'lucide-react';
+import {  List, MenuIcon, MessageSquareText, Users2, X } from 'lucide-react';
 const Users = ({ userData,setSelectedChatRoom}) => {
   const [activeTab, setActiveTab] = useState('users');
 const [loading,setLoading] = useState(false)
@@ -136,7 +136,7 @@ const handleChatRoomClick = () => {
       <aside id="logo-sidebar"  className={`fixed top-10 left-0 z-40 h-[60vh] w-64 pt-20 transition-transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }  bg-dark-pinkHard  border-r border-gray-200 sm:translate-x-0  `} aria-label="Sidebar">
-<div className="h-full px-3 pb-4 overflow-y-auto bg-opacity-80 bg-dark-pinkLight ">
+<div className="h-full px-3 pb-4 overflow-y-auto bg-[#C2BAE0] ">
 <ul className="space-x-4 mt-8 font-medium flex">
   <li className=''>
   <button
@@ -168,7 +168,7 @@ const handleChatRoomClick = () => {
 {activeTab==="Chatrooms" && <>
 
 <dialog id='my_modal_2' className="modal">
-  <div className="modal-box">
+  <div className="modal-box bg-[#DBB9FB]">
     <h3 className="font-bold text-lg">Hello!</h3>
     <p className="py-4">Press ESC key or click the button below to close</p>
     <div className="modal-action">
@@ -202,7 +202,7 @@ const handleChatRoomClick = () => {
 {activeTab==="users" && (
   <>
 <dialog id='my_modal_1' className="modal">
-  <div className="modal-box">
+  <div className="modal-box bg-[#DBB9FB]">
     <h3 className="font-bold text-lg">Hello!</h3>
     <p className="py-4">Press ESC key or click the button below to close</p>
     <div className="modal-action">
