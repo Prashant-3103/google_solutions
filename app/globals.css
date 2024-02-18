@@ -12,6 +12,9 @@
   }
 
 }
+body{
+    background-color: #f4daf2;
+}
 
 .glass-container{
     background-color: rgba(255, 255, 255, 0.2); /* Adjust the alpha value for transparency */

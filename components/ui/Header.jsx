@@ -11,11 +11,10 @@ import { doc, getDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
 const navItemsInfo = [
     { name: "Home", type: "link", href: "/" },
-    { name: "Articles",type: "link", href: "/articles" },
-    { name: "Pages",type: "dropdown",items: [{title: 'About us', href: "/about"},
-    {title: 'Contact us', href: "/contact"}]  },
-    { name: "Pricing",type: "link", href: "pricing" },
-    { name: "Faq",type: "link", href: "/faq" },
+    { name: "Help Centers",type: "link", href: "/help-centers" },
+    { name: "Chat with us",type: "dropdown",items: [{title: 'Community Chat', href: "/community-chat"},
+    {title: 'Direct Chat', href: "/chat-with-us"}]  },
+    { name: "AI chatbot",type: "link", href: "/chat-with-ai" },
 ];
 
 
@@ -128,7 +127,7 @@ const logoutHandler = async () => {
 };
 
         return (
-            <section className="sticky top-0 left-0 right-0 z-50 bg-white">
+            <section className="sticky border-b border-sky-100 top-0  h-22 left-0 right-0 z-50 bg-[#f980ff]">
             <header className='container mx-auto px-5 flex justify-between py-4 items-center'>
                 <Link href="/">
                     <Image
@@ -150,10 +149,10 @@ const logoutHandler = async () => {
         <div
           className={`${
             navIsVisible ? "right-0" : "-right-full"
-          } transition-all duration-300 mt-[56px] lg:mt-0 bg-dark-hard lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}
+          } transition-all duration-300 mt-[56px] lg:mt-0 bg-[#ba1aae] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}
         >
 
-                    <ul className='flex flex-col items-center gap-y-5 lg:flex-row gap-x-2 font-semibold text-white lg:text-dark-soft'>
+                    <ul className='flex flex-col items-center gap-y-5 lg:flex-row gap-x-2 font-semibold text-white lg:text-white'>
                         {navItemsInfo.map((item) => (
                             <NavItem key={item.name} item={item}/>
                         ))}
@@ -165,7 +164,7 @@ const logoutHandler = async () => {
 <div className='relative group'>
 <div className='flex flex-col items-center'>
            <button
-            className="flex gap-x-1 items-center border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300 "
+            className="flex gap-x-1 items-center border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 "
             onClick={()=>setProfileDropdown(!profileDropdown)}
           >
             <span>Account</span>
@@ -198,7 +197,7 @@ Logout    </button>
 
                     </div>)
                     : <button onClick={()=>router.push('/login')}
-                     className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300'>
+                     className='border-2 mt-5 lg:mt-0 border-blue-500 text-black px-6 py-2 rounded-full text-full-500 font-extrabold hover:bg-dark-spansoft hover:text-white transition-all duration-300'>
                         Sign in
                         </button> }
 

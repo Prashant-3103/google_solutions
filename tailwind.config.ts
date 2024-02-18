@@ -10,11 +10,14 @@ module.exports = {
     extend: {
      colors: {
       primary: "#1565D8",
+      white: "#ffffff",
       dark:{
         light: "#5a7184",
         hard: "#0D2436",
         soft: "#184B56",
-        spansoft: '#FF9F6D'
+        spansoft: '#FF9F6D',
+        pinkHard: '#be5cbb',
+        pinkLight: '#f4daf2'
       },
      },
      fontFamily: {

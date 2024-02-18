@@ -5,9 +5,8 @@ import { getAuth,onAuthStateChanged } from "firebase/auth";
 import { doc,getDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import Users from "./_components/Users";
-import ChatRoom from "./_components/ChatRoom";
-import { useMediaQuery } from "react-responsive";
+import CommunityChatUsers from "@/app/community-chat/_components/CommunityUsers"
+import CommunityChatRooms from "@/app/community-chat/_components/CommunityChatRooms";
 const page = () => {
 
     const auth = getAuth(app)
@@ -31,20 +30,17 @@ const unsubscribe = onAuthStateChanged(auth,async(user)=>{
 })
 return ()=>unsubscribe()
 },[auth,router])
-const isSmallScreen = useMediaQuery({ query: "(max-width: 767px)" });
-const chatRoomClass = isSmallScreen ? "flex-grow" : "w-full";
     return (
        <>
 
  <div className="flex bg-[#DBB9E0]">
  <div className="">
- <Users userData={user} setSelectedChatRoom={setSelectedChatRoom}/>
+ <CommunityChatUsers userData={user} setSelectedChatRoom={setSelectedChatRoom}/>
 
  </div>
  <div className="flex-grow w-3/12 lg:ml-[200px] lg:mb-12">
- <ChatRoom user={user} selectedChatRoom={selectedChatRoom}/>
+ <CommunityChatRooms user={user} selectedChatRoom={selectedChatRoom}/>
     </div>
-
             </div>
 
        </>
