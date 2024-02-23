@@ -34,11 +34,9 @@ console.log(user);
 
   return(
     <>
-   
 <CreateCommunity user={user}/>
 <JoinCommunity user={user}/>
     </>
-
   )
 }
 export default page

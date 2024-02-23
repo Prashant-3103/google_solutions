@@ -20,9 +20,10 @@ const Hero = () => {
 
             </div>
            <div className=" flex flex-wrap gap-x-4 gap-y-2.5 lg:text-sm xl:text-base ">
-           <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '>Community</button>
-            <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '><Link href="/chat-with-us">Chat</Link></button>
+           <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '>Community chats</button>
+            <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '><Link href="/chat-with-us">AI Chat</Link></button>
             <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '>Talk to one of us</button>
+            <button className='border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full text-full-500 font-semibold hover:bg-dark-spansoft hover:text-white transition-all duration-300 '>Create Blogs</button>
            </div>
 
           </div>

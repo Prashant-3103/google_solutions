@@ -4,6 +4,7 @@ import MessageInput from './MessageInput'
 import { useEffect, useState,useRef } from 'react'
 import { firestore } from '@/lib/firebase'
 import { addDoc,collection,doc,serverTimestamp,onSnapshot,query,where,orderBy,updateDoc } from 'firebase/firestore'
+import ChatWithAi from './ChatWithAi'
 
 const ChatRoom = ({user,selectedChatRoom}) => {
     console.log("hey",selectedChatRoom);
@@ -76,6 +77,7 @@ console.log(error);
 </div>
 <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage} image={image} setImage={setImage}/>
     </div>
+    <ChatWithAi/>
         </div>
       </div>
     </div>

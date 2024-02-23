@@ -15,6 +15,7 @@ const navItemsInfo = [
     { name: "Chat with us",type: "dropdown",items: [{title: 'Community Chat', href: "/community-chat"},
     {title: 'Direct Chat', href: "/chat-with-us"}]  },
     { name: "AI chatbot",type: "link", href: "/chat-with-ai" },
+    { name: "Blogs",type: "link", href: "/blogs" },
 ];
 
 
