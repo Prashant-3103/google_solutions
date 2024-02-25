@@ -32,6 +32,12 @@ We aim to create a platform offering free, confidential support to people affect
 
 ## Google Technologies
 
+
+### Blogs
+
+- Notes-making website, "Jotio", developed using NextJs, Convex database 
+- Allows users to create, share and publish blogs.
+
 ### AI Chatbot
 
 - Developed using [Vertex AI Dialogflow API.](https://cloud.google.com/dialogflow)
@@ -42,7 +48,9 @@ We aim to create a platform offering free, confidential support to people affect
 - Implemented using [Firebase Realtime Database.](https://firebase.google.com/)
 - Enables survivors to engage in real-time conversations with support.
 
-### Future Integration - Google Maps
+### Real-time Community Messaging
 
-- Planned integration to display safe locations for women.
-- Utilizing [Google Maps API](https://cloud.google.com/maps-platform/) for accurate location information.
+- Implemented using [Firebase Realtime Database.](https://firebase.google.com/)
+- Enables survivors to engage in real-time conversations with support from the concerned community and the respective experts.
+
+
