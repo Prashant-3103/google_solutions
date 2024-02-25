@@ -6,6 +6,7 @@ import { collection,onSnapshot,query,addDoc,serverTimestamp,where,getDocs, doc, 
 import { getAuth,signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import ChatWithAi from "@/app/chat-with-us/_components/ChatWithAi"
 import {  List, MenuIcon, MessageSquareText, Users2, X } from 'lucide-react';
 const Users = ({ userData,setSelectedChatRoom}) => {
   const [activeTab, setActiveTab] = useState('users');
@@ -13,6 +14,7 @@ const [loading,setLoading] = useState(false)
 const[users,setUsers] = useState([])
 const router = useRouter()
 const[userChatRooms,setUserChatRooms] = useState([])
+
 const auth = getAuth(app)
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -216,10 +218,12 @@ const handleChatRoomClick = () => {
       <UserCard name={user.name} avatarUrl={user.avatarUrl} time="2 hour ago" type={"user"} />
 
             )}
+
             </div>
             )
 
             )}
+            
             </>
 
         )}

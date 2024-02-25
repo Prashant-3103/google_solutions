@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
+import Logo from "@/assets/logo.jpg"
 import Image from 'next/image'
-
 export default function Footer() {
   return (
     <footer className='bg-[#f980ff]'>
@@ -15,7 +15,7 @@ export default function Footer() {
             <div className="md:col-span-4 lg:col-span-5">
               <div className="mb-2">
                 {/* Logo */}
-             <img className='w-16 object-cover rounded-full border-4 border-gray-300 hover:border-blue-200 shadow-lg hover:shadow-xl transition duration-300' src='./logo.jpg'/>
+             <Image alt='logo' className='w-16 object-cover rounded-full border-4 border-gray-300 hover:border-blue-200 shadow-lg hover:shadow-xl transition duration-300' src={Logo}/>
               </div>
               <div className="text-dark-soft font-bold">We're here to simplify the journey, empowering survivors with clarity and unwavering support.</div>
             </div>

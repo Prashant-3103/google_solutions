@@ -1,9 +1,12 @@
-import React from 'react'
 
-const CommunityUsers = () => {
+const communityUsers = ({ userData,setSelectedChatRoom}) => {
+
   return (
-    <div>CommunityUsers</div>
-  )
-}
+    <div>
+users
+    </div>
 
-export default CommunityUsers
+  );
+};
+
+export default communityUsers;
