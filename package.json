@@ -20,6 +20,7 @@
     "dialogflow": "^1.2.0",
     "emoji-picker-react": "^4.6.11",
     "firebase": "^10.7.1",
+    "framer-motion": "^11.0.6",
     "google-auth-library": "^9.4.2",
     "lucide-react": "^0.316.0",
     "moment": "^2.30.1",

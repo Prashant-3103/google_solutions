@@ -2,8 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 import Timeline from "@/components/ui/Timeline"
 import { BookOpen } from 'lucide-react'
+import Carousel from "@/components/ui/Carousel"
 import Link from 'next/link'
 const page = () => {
+
   return (
     <div>
         <section className='container w-full mx-auto flex flex-col items-center px-5 py-10 lg:flex-row relative bg-[#fbb2fb] '>
@@ -52,6 +54,17 @@ const page = () => {
           <div className='flex flex-col  items-center justify-between bg-[#fbb2fb]'>
          <button className='border-2  font-roboto mt-5 lg:mt-9 border-[#c7678c] text-[1.5rem] lg:text-zinc-100 px-6 py-2 rounded-full text-full-500 font-semibold bg-[#d77c9f]/80 hover:bg-dark-pinkHard hover:text-white transition-all duration-300  lg:mb-8 '><Link href="https://note-taking-app-umber.vercel.app/documents">Go to blogs</Link></button>
           </div>
+          {/* <div className="dropdown dropdown-right dropdown-end">
+  <div tabIndex={0} role="button" className="btn m-1">Click</div>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+
+   <li><Link href="/blogs/j57dk93p733rynz6s2a3cb70m16m2tbm">blog2</Link></li>
+   <li><Link href="/blogs/j57btfvyp99y3jcsvr98ax16rh6m40s9">blog3</Link></li>
+   <li><Link href="/blogs/j57313j6rw1cdj052f2r19m5a96m58tq">blog4</Link></li>
+  </ul>
+</div> */}
+<Carousel/>
+
     </div>
 
   )

@@ -4,10 +4,10 @@ import React from 'react'
 const page = () => {
   return (
   <div>
-    <section className='container w-full mx-auto flex flex-col items-center px-5 py-5 lg:flex-row relative bg-[#f3d0f6] '>
+    <section className='container w-full mx-auto flex flex-col items-center px-5 py-5 lg:flex-row relative background-ai'>
       <div className='lg:flex lg:flex-row mt-3'>
       <div className='lg:block lg:w-1/2 relative '>
-          <Image height={2688} width={1536} className='object-contain rounded-lg' src="/ai-chat.jpg" alt="users are reading articles" />
+          <Image height={2688} width={1536} className='image-ai object-contain rounded-lg' src="/ai-chat.jpg" alt="users are reading articles" />
         </div>
         <div className='mt-10 lg:w-1/2 z-10 text-center lg:m-6 '>
           <h1 className='font-roboto text-3xl font-bold text-dark-soft lg:text-4xl xl:text-5xl md:text-5xl lg:text-left lg:max-w-[540px]'>
