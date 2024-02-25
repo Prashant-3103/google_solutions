@@ -11,12 +11,12 @@ const page = () => {
         </div>
         <div className='mt-10 lg:w-1/2 z-10 text-center lg:m-6 '>
           <h1 className='font-roboto text-3xl font-bold text-dark-soft lg:text-4xl xl:text-5xl md:text-5xl lg:text-left lg:max-w-[540px]'>
-            AI Chat Bot
+            Talk to Saheli ❤️
           </h1>
-          <p className='text-dark-light mt-4  lg:text-6xl lg:font-semibold xl:text-xl md:text-xl lg:text-left'>
+          <p className='text-red-300 mt-4  lg:text-6xl lg:font-semibold xl:text-xl md:text-xl lg:text-left'>
             Let's talk empowerment! Our friendly AI, armed with legal smarts, is here to guide you step by step. Share your story, get personalized support, and decide your next steps with ease. Chat with our empathetic friend now!
           </p>
-          <div className='mt-5 lg:mt-20 border-2 px-3 py-3 rounded-md border-[#f5bbf5]'>
+          <div className='mt-5  lg:mt-30 px-3 py-3 rounded-md border-[#f5bbf5]'>
           <ul className="timeline timeline-vertical">
   <li>
     <div className="timeline-start timeline-box">Join platform</div>

@@ -116,10 +116,19 @@ const toggleSidebar = () => {
 };
 const handleUserClick = () => {
   handleTabClick("users");
+  const modalElement = document.getElementById('my_modal_1');
+  if (modalElement) {
+    modalElement.showModal();
+  }
+
 };
 
 const handleChatRoomClick = () => {
   handleTabClick("Chatrooms");
+  const modalElement = document.getElementById('my_modal_2');
+  if (modalElement) {
+    modalElement.showModal();
+  }
 };
 
 
@@ -135,19 +144,21 @@ const handleChatRoomClick = () => {
       </button>
 
       {/* Sidebar */}
-      <aside id="logo-sidebar"  className={`fixed top-10 left-0 z-40 h-[60vh] w-64 pt-20 transition-transform ${
+      <aside id="logo-sidebar"  className={`h-full top-22 left-0 z--1 w-64 pt-20 transition-transform help-ul ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }  bg-dark-pinkHard  border-r border-gray-200 sm:translate-x-0  `} aria-label="Sidebar">
-<div className="h-full px-3 pb-4 overflow-y-auto bg-[#C2BAE0] ">
-<ul className="space-x-4 mt-8 font-medium flex">
+<div className="h-full  px-3 pb-4 overflow-y-auto">
+<ul className=" font-medium flex flex-col space-y-5 items-start my-auto justify-between">
   <li className=''>
   <button
           onClick={handleUserClick}
           className={`btn btn-outline rounded-full   ${activeTab === 'users' ? 'bg-dark-spansoft text-white transition-all duration-300' : ''}`}
         >
-         <Users2 />
+         <Users2  />
+         <h3 className='font-semibold font-roboto'>users</h3>
         </button>
-        {activeTab==="users" &&<List className='mt-4 ml-3' onClick={()=>document.getElementById('my_modal_1').showModal()}>open modal</List>}
+
+
   </li>
   <li className=''>
   <button
@@ -155,8 +166,9 @@ const handleChatRoomClick = () => {
           className={`btn   btn-outline rounded-full   ${activeTab === 'Chatrooms' ? 'bg-dark-spansoft text-white transition-all duration-300' : ''}`}
         >
           <MessageSquareText />
+          <h3 className='font-semibold font-roboto text-zinc-200'>Chat rooms</h3>
         </button>
-       {activeTab==="Chatrooms" &&<List className='mt-4 ml-3' onClick={()=>document.getElementById('my_modal_2').showModal()}>open modal</List>}
+
 
   </li>
   <li className=''> <button
@@ -223,7 +235,7 @@ const handleChatRoomClick = () => {
             )
 
             )}
-            
+
             </>
 
         )}
