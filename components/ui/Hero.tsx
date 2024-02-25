@@ -42,7 +42,7 @@ const Hero = () => {
           </div>
           </div>
         <div className='hidden lg:block lg:w-1/2 relative z-20'>
-          <img className='object-contain h-[400px] w-[400px] rounded-lg ml-[100px] mt-10 ' src="/hero1.png" alt="users are reading articles" />
+          <img className='object-contain header.img h-[400px] w-[400px] rounded-lg ml-[100px] mt-10 ' src="/hero1.png" alt="users are reading articles" />
         </div>
 
       </section>

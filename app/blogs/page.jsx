@@ -11,9 +11,9 @@ const page = () => {
         <section className='container w-full mx-auto flex flex-col items-center px-5 py-10 lg:flex-row relative bg-[#fbb2fb] '>
         <div className='lg:flex lg:flex-row mt-3'>
         <div className='lg:block lg:w-1/2 relative '>
-          <Image height={2688} width={1536} className='object-contain rounded-lg' src="/blog-page.jpg" alt="users are reading articles" />
+          <Image height={2688} width={1536} className='object-contain rounded-lg image-ai' src="/blog-page.jpg" alt="users are reading articles" />
         </div>
-        <div className='mt-10 lg:w-1/2 z-10 text-center lg:m-6 '>
+        <div className='mt-10 lg:w-1/2 z-10 text-center lg:m-6  '>
           <h1 className='font-roboto text-3xl font-bold text-dark-soft lg:text-4xl xl:text-5xl md:text-5xl lg:text-left lg:max-w-[540px]'>
             Write and share blogs
           </h1>
@@ -21,7 +21,7 @@ const page = () => {
             Use this platform to share your experiences, learning to spread awareness and knowledge to the women out there and make them equipped with the understanding and wisdom,
             This platform let's you write blogs, add images and icons of your choice and gives you an option to publish or unpublish the blog as per your will.
           </p>
-          <div className='mt-5 lg:mt-20 border-2 px-3 py-3 rounded-md border-[#f3d0f3]'>
+          <div className='mt-5 lg:mt-40 image-ai  border-3 px-3 py-3 rounded-md border-[#f3d0f3]'>
           <ul className="timeline timeline-vertical">
   <li>
     <div className="timeline-start timeline-box">Join platform</div>

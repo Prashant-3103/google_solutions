@@ -11,7 +11,7 @@ const Description = ({clickNext,clickPrev, activeImage}) => {
 router.push(`/blogs/${id}`)
     }
   return (
-    <div className="grid place-items-start w-full bg-[#e7dfd9] relative md:rounded-tr-3xl md:rounded-br-3xl">
+    <div className="grid place-items-start w-full image-ai relative md:rounded-tr-3xl md:rounded-br-3xl">
     <div className="uppercase text-sm absolute right-4 top-2 underline-offset-4 underline">
       Blogs
     </div>
@@ -47,11 +47,12 @@ router.push(`/blogs/${id}`)
           </div>
 
         </motion.div>
+
+
+        <div className="absolute md:bottom-1 bottom-10 right-10 md:right-0 w-full flex justify-center items-center">
         <button onClick={() => goToBlog({ id: elem.id })} className="bg-[#ecae7e] text-white uppercase px-4 py-2 rounded-md my-10">
           Go to blog
         </button>
-
-        <div className="absolute md:bottom-1 bottom-10 right-10 md:right-0 w-full flex justify-center items-center">
           <div
             className="absolute bottom-2 right-10 cursor-pointer"
             onClick={clickPrev}
