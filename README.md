@@ -35,7 +35,7 @@ We aim to create a platform offering free, confidential support to people affect
 
 ### Blogs
 
-- Notes-making website, "Jotio", developed using NextJs, Convex database 
+- Notes-making website, "Jotion", developed using NextJs, Convex database 
 - Allows users to create, share and publish blogs.
 
 ### AI Chatbot
